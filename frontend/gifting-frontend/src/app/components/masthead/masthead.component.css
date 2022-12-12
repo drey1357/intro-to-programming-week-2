@@ -1,0 +1,10 @@
+h1{
+    font-size: 3rem;
+    font-weight: bolder;
+    color: midnightblue;
+}
+
+header > p {
+    font-size: 1.5 rem;
+    color: goldenrod;
+}

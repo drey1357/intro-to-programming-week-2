@@ -1,0 +1,9 @@
+<div class="card" *ngFor="let person of people$ | async">
+    <div class="card-body">
+    <h5 class="card-title">{{person.firstName}} {{person.lastName}}</h5>
+    <p class="card-text">{{person.firstName}} is one of the people on your list.</p>
+    <a href="#" class="card-link">Choose A Gift</a>
+    <a href="#" class="card-link">See Gifts</a>
+</div>
+</div>
+
