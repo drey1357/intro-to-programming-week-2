@@ -5,3 +5,13 @@
 GET http://localhost:1337/people HTTP/1.1
 Accept: : application/json
 
+### Adding a Person
+
+POST http://localhost:1337/people HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "firstName": "Gene",
+    "lastName": "Sisko"
+}
