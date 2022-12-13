@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { PersonListItem } from 'src/app/models/people';
-import { PersonDataService } from 'src/app/services/people-data.service';
+import { Store } from '@ngrx/store';
+import { selectPeopleList } from 'src/app/state';
 
 @Component({
   selector: 'app-people-list',
@@ -9,11 +8,6 @@ import { PersonDataService } from 'src/app/services/people-data.service';
   styleUrls: ['./people-list.component.css']
 })
 export class PeopleListComponent {
-
-  people$: Observable<PersonListItem[]>;
-  constructor(private service:PersonDataService){
-    // this is bad, more on this tomorrow
-    this.people$ = service.getPeople();
-    //service.getPeople().subscribe();
-  }
+  people$ = this.store.select(selectPeopleList)
+  constructor(private readonly store:Store) { }
 }

@@ -1,11 +1,21 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="addPerson()">
     <div class="form-group">
     <label for="firstName">First Name</label>
-    <input class="form-control" name="firstName">
+    <input autofocus class="form-control" name="firstName" formControlName="firstName">
+    <div class="alert alert-danger" *ngIf="firstName.errors && (firstName.touched || firstName.dirty)">
+    <p *ngIf="firstName.hasError('required')">We need a first name</p>
+    <p *ngIf="firstName.hasError('maxlength')">This is too darned long!</p>
+    </div>
     </div>
     <div class="form-group">
     <label for="lastName">Last Name</label>
-    <input class="form-control" name="lastName">
+    <input class="form-control" name="lastName" formControlName="lastName">
+    <div class="alert alert-danger" *ngIf="lastName.errors && (lastName.touched || lastName.dirty)">
+    <p *ngIf="lastName.hasError('required')">We need a last name</p>
+    <p *ngIf="lastName.hasError('maxlength')">This is too darned long!</p>
     </div>
-    <button type="submit" class="btn btn-success">Add This Person</button>
+    </div>
+    <button  type="submit" class="btn btn-success">Add This Person</button>
     </form>
+
+    <pre> {{ demo$ | async | json }}</pre>
