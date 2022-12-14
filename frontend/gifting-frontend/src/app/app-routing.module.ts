@@ -18,6 +18,10 @@ const routes: Routes = [
     component: AboutUsComponent
   },
   {
+    path: 'counter',
+    loadChildren: () => import('./features/counter/counter.module').then(m => m.CounterModule)
+  },
+  {
     path: '**',
     redirectTo: 'dashboard'
   }
