@@ -1,0 +1,5 @@
+<div class="btn-group" role="group" aria-label="Counter Count By Options">
+    <button [disabled]="(countingBy$ | async) === 1" (click)="setCountBy(1)" type="button" class="btn btn-primary">Count By 1</button>
+    <button [disabled]="(countingBy$ | async) === 3" (click)="setCountBy(3)" type="button" class="btn btn-primary">Count By 3</button>
+    <button [disabled]="(countingBy$ | async) === 5" (click)="setCountBy(5)" type="button" class="btn btn-primary">Count By 5</button>
+</div>

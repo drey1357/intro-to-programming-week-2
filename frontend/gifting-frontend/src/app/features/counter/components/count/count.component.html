@@ -1,0 +1,6 @@
+<button (click)="decrement()" class="btn btn-danger">-</button>
+<span>{{current$ | async}}</span>
+<button (click)="increment()" class="btn btn-success">+</button>
+<div>
+    <button [disabled]="(current$ | async) === 0" (click)="reset()">Reset</button>
+</div>
