@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { CounterCommands } from './state/actions/count-actions';
 
 @Component({
   selector: 'app-counter',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./counter.component.css']
 })
 export class CounterComponent {
+  constructor(store:Store){
+    store.dispatch(CounterCommands.load())
+  }
 
 }

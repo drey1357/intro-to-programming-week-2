@@ -6,6 +6,8 @@ import { CountComponent } from './components/count/count.component';
 import { StoreModule } from '@ngrx/store';
 import { featureName, reducers } from './state';
 import { PrefsComponent } from './components/prefs/prefs.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterDataEffects } from './state/effects/counter-data.effects';
 
 
 const routes: Routes = [
@@ -39,7 +41,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature(featureName, reducers)
+    StoreModule.forFeature(featureName, reducers),
+    EffectsModule.forFeature([CounterDataEffects])
   ]
 })
 export class CounterModule { }

@@ -1,4 +1,5 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from "@ngrx/store";
+import { CountData } from "../models";
 
 import * as fromCount from './reducers/count-reducer';
 export const featureName = "counter";
@@ -23,3 +24,5 @@ const selectCountBranch = createSelector(selectFeature, f => f.count);
 
 export const selectCountCurrent = createSelector(selectCountBranch, b => b.current);
 export const selectCountingBy = createSelector(selectCountBranch, b => b.by);
+
+export const selectCountData = createSelector(selectCountBranch, b => b as CountData);
