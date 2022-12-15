@@ -1,5 +1,5 @@
 <header class = "container-fluid">
     <h1>Gift Giving</h1>
     <p>Created for Intro to Programming</p>
-    <p>You have {{people$ | async}} people on your list</p>
+    <p *ngIf="(peopleLoaded$ | async) === true">You have {{people$ | async}} people on your list</p>
 </header>

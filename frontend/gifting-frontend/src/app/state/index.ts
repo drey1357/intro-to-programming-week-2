@@ -19,9 +19,14 @@ const { selectAll: selectAllPeople } = fromPeople.adapter.getSelectors(selectPeo
 export const selectPeopleList = createSelector(
     selectAllPeople,
     (p) => p as PersonListItem[]
-)
+);
 
 export const selectNumberOfPeople = createSelector(
     selectAllPeople,
     p => p.length
-)
+);
+
+export const selectPeopleLoaded = createSelector(
+    selectPeopleFeature,
+    (f) => f.loaded,
+);

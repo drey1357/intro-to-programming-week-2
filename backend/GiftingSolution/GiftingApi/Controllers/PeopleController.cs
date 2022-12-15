@@ -6,9 +6,11 @@ namespace GiftingApi.Controllers;
 public class PeopleController : ControllerBase
 {
     private readonly ICatalogPeople _personCatalog;
-    public PeopleController(ICatalogPeople personCatalog)
+    private readonly ILogger<PeopleController> _logger;
+    public PeopleController(ICatalogPeople personCatalog, ILogger<PeopleController> logger)
     {
         _personCatalog = personCatalog;
+        _logger = logger;
     }
 
     [HttpGet("/people/{id:int}")]
@@ -45,10 +47,20 @@ public class PeopleController : ControllerBase
 
     // GET /people
     [HttpGet("/people")]
-    public async Task<ActionResult<PersonResponse>> GetAllPeople()
+    public async Task<ActionResult<PersonResponse>> GetAllPeople(CancellationToken token)
     {
-        await Task.Delay(3000);
-        PersonResponse response = await _personCatalog.GetPeopleAsync();
-        return Ok(response);
+        try
+        {
+            await Task.Delay(3000);
+            PersonResponse response = await _personCatalog.GetPeopleAsync(token);
+            _logger.LogInformation($"Got {response.Data.Count} people from the database");
+            return Ok(response);
+        }
+        catch (TaskCanceledException)
+        {
+
+            _logger.LogInformation("Fine. They hung up; no reason to send a response");
+            return BadRequest();
+        }
     }
 }
