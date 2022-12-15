@@ -26,6 +26,7 @@
     "prettier-plugin-multiline-arrays": "^1.1.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "zod": "^3.20.2",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
